@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавление класса</title>
+</head>
+<body>
+<form action="/school/addGrades" method="post" th:object="${grades}">
+    <input type="text" name="gradeName" placeholder="Введите название класса" th:field="*{gradeName}">
+    <div th:if="${#fields.hasErrors('gradeName')}" th:errors="*{gradeName}" style="color: red"></div>
+    <button type="submit">Добавить</button>
+</form>
+</body>
+</html>

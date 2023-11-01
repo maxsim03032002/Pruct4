@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавление должности</title>
+</head>
+<body>
+<form action="/school/addPositions" method="post" th:object="${positions}">
+    <input type="text" name="positionName" placeholder="Введите должность"  th:field="*{positionName}">
+    <div th:if="${#fields.hasErrors('positionName')}" th:errors="*{positionName}" style="color: red"></div>
+    <button type="submit">Добавить</button>
+</form>
+</body>
+</html>

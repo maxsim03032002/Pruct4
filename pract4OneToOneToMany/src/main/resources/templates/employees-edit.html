@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Изменение сотрудника</title>
+</head>
+<body>
+<form th:action="@{'/school/employees/' + ${employees.id} + '/edit'}" method="post" th:object="${employees}">
+    <p th:text="${employees.surname} + ' ' + ${employees.name} + ' ' + ${employees.patronymic} + ' ' + ${employees.birthdate}"></p>
+    <input type="text" name="surname" placeholder="Введите фамилию" th:value="${employees.surname}" th:field="*{surname}">
+    <div th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}" style="color: red"></div>
+    <input type="text" name="name" placeholder="Введите имя" th:value="${employees.name}" th:field="*{name}">
+    <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: red"></div>
+    <input type="text" name="patronymic" placeholder="Введите отчество" th:value="${employees.patronymic}" th:field="*{patronymic}">
+    <div th:if="${#fields.hasErrors('patronymic')}" th:errors="*{patronymic}" style="color: red"></div>
+    <input type="date" name="birthdate" placeholder="Введите день рождения" th:value="${employees.birthdate}" th:field="*{birthdate}">
+    <div th:if="${#fields.hasErrors('birthdate')}" th:errors="*{birthdate}" style="color: red"></div>
+    <button type="submit">Изменить</button>
+
+    <td>
+        <a href="/school" class="btn btn-primary">Вернуться</a>
+    </td>
+</form>
+</body>
+</html>

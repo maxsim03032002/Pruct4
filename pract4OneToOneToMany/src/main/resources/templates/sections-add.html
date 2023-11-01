@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавление ученика</title>
+</head>
+<body>
+<form action="/school/addSections" method="post"  th:object="${sections}">
+    <input type="text" name="sectionName" placeholder="Введите название секции" th:field="*{sectionName}">
+    <div th:if="${#fields.hasErrors('sectionName')}" th:errors="*{sectionName}" style="color: red"></div>
+    <input type="text" name="classTime" placeholder="Введите время занятий" th:field="*{classTime}">
+    <div th:if="${#fields.hasErrors('classTime')}" th:errors="*{classTime}" style="color: red"></div>
+    <button type="submit">Добавить</button>
+</form>
+</body>
+</html>
